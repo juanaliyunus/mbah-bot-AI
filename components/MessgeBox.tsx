@@ -46,7 +46,7 @@ const MessgeBox = ({ chats }: ChatProps) => {
                         }
                     }}
                 >
-                    {chats.parts}
+                    {chats.parts} 
                 </ReactMarkdown>
             </div>
         </div>
