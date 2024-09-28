@@ -1,4 +1,4 @@
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 import { FiMessageSquare } from 'react-icons/fi';
 import { TbRobot } from 'react-icons/tb'; // Ganti spinner dengan ikon robot untuk model
 import CodeHighlighter from './CodeHighlighter';
@@ -24,23 +24,25 @@ const MessgeBox = ({ chats }: ChatProps) => {
                 <ReactMarkdown
                     className="flex flex-col gap-4"
                     components={{
-                        code({ children, inline, className, ...props }: any) {
+                        code({ inline, className, children, ...props }: any) {
                             const match = /language-(\w+)/.exec(className || '')
                             let language;
 
                             if (match && match[1]) {
-                                language = match[1]
+                                language = match[1];
                             } else {
-                                language = "jsx"
+                                language = "jsx";
                             }
 
                             return !inline && match ? (
-                                <CodeHighlighter children={children} language={language} />
+                                <CodeHighlighter language={language}>
+                                    {children}
+                                </CodeHighlighter>
                             ) : (
                                 <code className='bg-gray-800 text-white px-2 py-[1px] leading-loose rounded' {...props}>
                                     {children}
                                 </code>
-                            )
+                            );
                         }
                     }}
                 >
@@ -48,7 +50,7 @@ const MessgeBox = ({ chats }: ChatProps) => {
                 </ReactMarkdown>
             </div>
         </div>
-    )
+    );
 }
 
-export default MessgeBox
+export default MessgeBox;
